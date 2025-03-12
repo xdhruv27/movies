@@ -34,4 +34,19 @@ export interface Movie {
       return this.movies.filter(m => m.genre.toLowerCase() === genre.toLowerCase());
     }
   
-   
+    getMoviesByDirector(director: string): Movie[] {
+        return this.movies.filter(m => m.director.toLowerCase() === director.toLowerCase());
+      }
+    
+      searchMoviesBasedOnKeyword(keyword: string): Movie[] {
+        return this.movies.filter(m => m.title.toLowerCase().includes(keyword.toLowerCase()));
+      }
+    
+      getMovie(id: string): Movie | undefined {
+        return this.movies.find(m => m.id === id);
+      }
+    
+      removeMovie(id: string): void {
+        this.movies = this.movies.filter(m => m.id !== id);
+      }
+    }
